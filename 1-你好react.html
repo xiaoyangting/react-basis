@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>react</title>
+
+</head>
+<body>
+  <div id="test">
+  </div>
+
+  <script src="https://cdn.bootcdn.net/ajax/libs/react/16.8.4/umd/react.development.js"></script>
+  <!-- react-dom 解析 -->
+  <script src="https://cdn.bootcdn.net/ajax/libs/react-dom/16.8.4/umd/react-dom.development.js"></script>
+  <!-- es6+ 转 es5 也是react 的jsx 解析 -->
+  <script type="text/javascript" src="https://cdn.bootcss.com/babel-standalone/6.26.0/babel.js"></script>
+  <script type="text/babel">
+    // 创建 jsx,  babel 会把他转换为虚拟dom
+    let VNode = <h1>你好呀, react</h1>
+    // 使用 react 的 render 方法转换为真实dom
+    ReactDOM.render(VNode, document.getElementById('test'))
+    console.log(VNode);
+  </script>
+</body>
+</html>

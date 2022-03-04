@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <div id="test">cs </div>
+
+  <script src="https://cdn.bootcdn.net/ajax/libs/react/16.8.4/umd/react.development.js"></script>
+  <!-- react-dom 解析 -->
+  <script src="https://cdn.bootcdn.net/ajax/libs/react-dom/16.8.4/umd/react-dom.development.js"></script>
+  <!-- es6+ 转 es5 也是react 的jsx 解析 -->
+  <script type="text/javascript" src="https://cdn.bootcss.com/babel-standalone/6.26.0/babel.js"></script>
+  <script type="text/babel">
+    function Vnode() {
+      // console.log(this) // 函数组件在 babel 里面使用了严格模式, 在严格模式下, this 指向window 的情况下, 那么该this 会被置位 undefined
+      return <h1>你好呀 函数组件</h1>
+    }
+    ReactDOM.render(<Vnode />, document.getElementById('test'))
+  </script>
+</body>
+</html>

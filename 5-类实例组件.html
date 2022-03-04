@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <div id="test">cs </div>
+
+  <script src="https://cdn.bootcdn.net/ajax/libs/react/16.8.4/umd/react.development.js"></script>
+  <!-- react-dom 解析 -->
+  <script src="https://cdn.bootcdn.net/ajax/libs/react-dom/16.8.4/umd/react-dom.development.js"></script>
+  <!-- es6+ 转 es5 也是react 的jsx 解析 -->
+  <script type="text/javascript" src="https://cdn.bootcss.com/babel-standalone/6.26.0/babel.js"></script>
+  <script type="text/babel">
+    const bookList = ['沉默的大多数', '红宝书', '理想国', '被讨厌的勇气']
+    
+    // 类实例组件
+    class Vnode extends React.Component {
+      // 在没有constructor 的时候 可以不用调用 super 来继承父类, 会默认调用
+      // 但是如果调用了 constructor 的情况下, 那么就必须调用super这个值, 而且这个super 调用的位置必须再 使用 this 关键字的前面, 可以理解为这个 exends 只是告诉你 继承哪个类, 而super 才是真正的继承
+      // constructor(props) { // 构造器
+      //   super()
+      // }
+      render() {
+        console.log(this) // Vnode类的实例对象 <=> Vnode组件的实例对象 : 需要注意的是  是 new 出来的 实例对象, 不是 Vnode本身这个类
+        return (
+          <div>
+            <ul>
+              {
+                bookList.map(item => <li key={item}>{ item }</li>)
+              }
+            </ul>
+          </div>
+        )
+      }
+    }
+    // 渲染组件到页面
+    ReactDOM.render(<Vnode />, document.getElementById('test'))
+    /*
+        执行了 ReactDOM.render(<Vnode />, document.getElementById('test')) 发生了什么?
+          1. React 解析组件标签, 寻找Vnode 组件的定义配置
+          2. React 发现了Vnode 组件是用类定义的, react 创建一个Vnode的实例对象(也就是 new Vnode() ) -- d
+          3. 通过d(也就是实例对象) 去调用到 render 方法, 拿到返回的虚拟dom
+    */
+  </script>
+</body>
+</html>

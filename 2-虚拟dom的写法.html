@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>react</title>
+
+</head>
+<body>
+  <div id="test">cs </div>
+
+  <script src="https://cdn.bootcdn.net/ajax/libs/react/16.8.4/umd/react.development.js"></script>
+  <!-- react-dom 解析 -->
+  <script src="https://cdn.bootcdn.net/ajax/libs/react-dom/16.8.4/umd/react-dom.development.js"></script>
+  <!-- es6+ 转 es5 也是react 的jsx 解析 -->
+  <script type="text/javascript" src="https://cdn.bootcss.com/babel-standalone/6.26.0/babel.js"></script>
+  <script type="text/babel">
+    // 创建 jsx,  babel 会把他转换为虚拟dom
+    // let VNode = <h1>你好呀, react</h1>
+    // // 使用 react 的 render 方法转换为真实dom
+    // ReactDOM.render(VNode, document.getElementById('test'))
+    // console.log(VNode);
+
+
+    // 定义变量
+    const myId = 'yt'
+    const name = '肖杨挺'
+    const test = document.getElementById('test')
+
+    // 创建虚拟don 可换行创建
+    const VNode = (
+      <div>
+        <h1 id={myId} className='title'> 
+          <p>
+            定义类 class 不能直接用, 需要用className, 不能使用的原因是防止之后会和类继承发生冲突(class)
+          </p>
+          <span>
+            {name}, 在react 可以直接使用函数, 改为小写里面是原生js的写法, 如果使用的是变量 则一定要加 [大括号括起来]
+          </span>
+        </h1>
+
+        <h3 style={{ background: 'pink', color: 'red' }}>
+          行内样式需要的是一个对象, 所以在你写行内样式的时候, 外边的大括号表示的是里面是变量, 里面的大括号代表的是一个对象
+        </h3>
+
+        需要主要的是 标签必须要闭合, input是一个自结束标签, 需要后面加 /
+        <input type="text" />
+      </div> 
+    )
+
+    ReactDOM.render(VNode, test)
+    // jsx 的语法规则
+    //  1. 创建虚拟dom时, 不要写引号
+    //  2. 标签中要混入 js 表达式, 要用 {} 包裹起来
+    //  3. 标签中样式的类名要用 className 指定 ( 主要的原因是防止之后会和类继承发生冲突 )
+    //  4. 标签中的内联样式要用 style={ { color: 'pink', backgroundColor: 'red' } }, 主要属性名转为小驼峰.  为什么使用的是 {{}} 外边的大括号表示的是里面的变量, 里面的大括号代表的是一个对象
+    //  5. 只能有一个 根标签\
+    //  6. 标签必须得闭合, 不管是单标签 还是 双标签
+    //  7. 关于标签首字母
+            // 1. 若首字母小写, 那么react就会去寻找与之同名的html标签
+            //       若找见, 直接转为同名的 html 元素
+            //       若未找见, 报错
+            // 2. 若首字母大写, 那么react就会去寻找与之同名的组件
+            //       若找见, 那么就是用组件渲染
+            //       若未找见, 报错
+  </script>
+</body>
+</html>

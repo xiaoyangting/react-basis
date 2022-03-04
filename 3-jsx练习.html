@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="test">cs </div>
+
+  <script src="https://cdn.bootcdn.net/ajax/libs/react/16.8.4/umd/react.development.js"></script>
+  <!-- react-dom 解析 -->
+  <script src="https://cdn.bootcdn.net/ajax/libs/react-dom/16.8.4/umd/react-dom.development.js"></script>
+  <!-- es6+ 转 es5 也是react 的jsx 解析 -->
+  <script type="text/javascript" src="https://cdn.bootcss.com/babel-standalone/6.26.0/babel.js"></script>
+  <script type="text/babel">
+    const data = ['Angular', 'react', 'vue']
+    const Vnode = (
+      <div>
+        <ul>
+          {
+            // 在{}中，要的是一个表达式, 不支持 js代码语句, js表达式一定是 js代码语句 , 但 js代码语句不一定是 表达式
+            // js表达式是有返回值, 如 x + y,  fn(),  是否 ? 是 : 否 等. 而 js代码语句不一定有返回值
+            // data.map 有返回值 生成一个新的数组,  for循环没有返回值, 所以不能使用for循环
+            data.map(item => {
+              return <li key={item}> { item } </li>
+            })
+          }
+        </ul>
+      </div>
+    )
+
+    ReactDOM.render(Vnode, document.getElementById('test'))
+  </script>
+  
+</body>
+</html>
